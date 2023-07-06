@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="./plugins/sweetalert2/sweetalert2.all.min.js"></script>
 </head>
 
 <body>
@@ -1146,16 +1148,16 @@
                                     <input type="text" placeholder="Name" id="Name" class="form-control in-put">
                                 </div>
                                 <div>
-                                    <input type="text" placeholder="Email" id="Sender" class="form-control in-put">
+                                    <input type="text" placeholder="Email" id="Email" class="form-control in-put">
                                 </div>
                                 <div>
-                                    <input type="number" placeholder="Mobile" id="Number" class="form-control in-put">
+                                    <input type="number" placeholder="Mobile" id="Mobile" class="form-control in-put">
                                 </div>
                                 <div>
                                     <textarea name="messages" placeholder="Messages" id="Message"
                                         class="in-put"></textarea>
                                 </div>
-                                <button type="button" class="submit-btn" onclick="sendMail()">Submit</button>
+                                <button type="submit" class="submit-btn" onclick="sendMail()">Submit</button>
                             </form>
                         </div>
                     </div>
@@ -1300,8 +1302,60 @@
         <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
     </div>
 
-    <!-- JS here -->
 
+    <div id="div_modal"></div>
+    <div class="modal fade" id="poupform">
+        <div class="modal-dialog wi-dt" role="document">
+            <div class="modal-content design-form bg-change bg-change-2">
+                <div class="modal-header justify-content-center p-0 border-bottom-0">
+                    <div class="text-center">
+                        <img src="./images/inquiey.webp" class="img-fluid mb-2 ml-2" width="40%"
+                            alt="Book Free Appointment">
+                        <h4 class="mb-4"> Book an Inquiry</h4>
+                    </div>
+                    <button type="button" class="closess closse-mobile p-0"
+                        style="background-color: transparent; border:none;" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="p-0"><i class="fas fa-times"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body mb-0 p-0">
+                    <div class="text-center d-block" id="formmi">
+                        <div class="row justify-content-center mb-4">
+                            <div class="col-md-11 pl-0">
+                                <div class="input-group align-items-center mb-3">
+                                    <span><i class="far fa-user"></i></span>
+                                    <input type="text" class="form-control fr" placeholder="Enter Your name"
+                                        id="txt_bookFreeAppointmentWithBestDietitian_contact_name">
+                                </div>
+                                <div class="input-group align-items-center mb-3">
+                                    <span><i class="fas fa-phone-alt"></i></span>
+                                    <input type="number" class="form-control fr" placeholder="Enter Your contact Number"
+                                        id="txt_bookFreeAppointmentWithBestDietitian_contact_mobile">
+                                </div>
+                                <div class="input-group date-in align-items-center mb-3">
+                                    <span><i class="fas fa-comment-alt fa-flip-horizontal"></i></span>
+                                    <input type="text" class="form-control fr"
+                                        id="txt_bookFreeAppointmentWithBestDietitian_date"
+                                        placeholder="Enter Fitness Goal">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn" type="button">Inquiry Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- JS here -->
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="./js/sweetalert2.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <!-- Jquery, Popper, Bootstrap -->
     <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
@@ -1338,7 +1392,51 @@
     <!-- Jquery Plugins, main Jquery -->
     <script src="./assets/js/plugins.js"></script>
     <script src="./assets/js/main.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("OqU-2F2WKPuPs68B9");
+        })();
+    </script>
+    <script>
+        function sendMail() {
+            var params = {
+                Name: document.getElementById("Name").value,
+                Email: document.getElementById("Email").value,
+                Mobile: document.getElementById("Mobile").value,
+                Message: document.getElementById("Message").value
+            };
 
+            const serviceID = "service_eq8rfws";
+            const templateID = "template_qjbeu1e";
+
+            emailjs.send(serviceID, templateID, params)
+                .then(function (response) {
+                    document.getElementById("Name").value = "";
+                    document.getElementById("Email").value = "";
+                    document.getElementById("Mobile").value = "";
+                    document.getElementById("Message").value = "";
+
+                    console.log("Email sent successfully", response.status, response.text);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Thanks you for contact us',
+                        text: 'We will contact you soon.'
+                    })
+                    return false;
+                    // alert("Your message has been sent successfully!");
+                })
+                .catch(function (error) {
+                    console.error("Error sending email", error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Invalid cerdinatiol',
+                        text: 'Please enter valid email, name, mobile'
+                    })
+                    return false;
+                    // alert("There was an error sending your message. Please try again later.");
+                });
+        }
+    </script>
     <script>
         $("#student-slider1").owlCarousel({
             autoPlay: 3000, //Set AutoPlay to 3 seconds

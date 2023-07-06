@@ -348,7 +348,7 @@ hr {
         margin-bottom: 45px
     }
 
-    .about-img-2 img{
+    .about-img-2 img {
         width: 50%;
         height: auto;
     }
@@ -3275,7 +3275,6 @@ hr {
     color: #64676c;
     line-height: 1.6;
     margin-bottom: 35px;
-    padding-right: 50px
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -3365,7 +3364,7 @@ hr {
         position: unset
     }
 
-    .about-font-img img{
+    .about-font-img img {
         margin-left: 350px;
     }
 }
@@ -7145,7 +7144,7 @@ del {
         font-size: 14px;
     }
 
-    .about-font-img{
+    .about-font-img {
         display: none;
     }
 }
@@ -7308,4 +7307,117 @@ del {
     background-color: transparent;
     border: 3px solid #E7DC3D;
     color: #E7DC3D;
+}
+
+
+.design-form {
+    position: absolute;
+    top: 100px;
+    left: 30%;
+    width: 35%;
+    height: 466px;
+    border-radius: 10px;
+    z-index: -1;
+    background: linear-gradient(10deg, #8e9eab 0%, #c5c5c5 100%) !important;
+    /* background-color: #d7d3ff!important; */
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    padding: 15px;
+}
+
+.design-form input,
+.design-form textarea {
+    background: #c8c2ff;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.design-form p {
+    border: 2px solid #000;
+    width: 220px;
+    background-color: transparent;
+    color: #000;
+    padding: 6px 14px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    border-radius: 6px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.design-form h2 {
+    color: #fff;
+    font-weight: 700;
+    font-family: Nunito, sans-serif;
+}
+
+.design-form p:hover {
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #000;
+}
+
+
+.design-form p:hover i {
+    color: #fff;
+}
+
+.design-form button {
+    padding: 2px 14px;
+    background-color: #000;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+    border: 2px solid #000;
+    font-size: 20px;
+    font-family: Nunito, sans-serif;
+}
+
+.design-form button:hover {
+    background-color: transparent;
+    color: #000000;
+    border-color: #000;
+}
+
+.design-form label {
+    margin: 0;
+}
+
+.design-form p i {
+    display: none;
+}
+
+.design-form {
+    left: 18px;
+    width: 89%;
+    top: 16%;
+    height: auto;
+}
+
+.design-form h2 {
+    font-size: 26px;
+}
+
+
+#formmi input {
+    background: #d7d3ff;
+    box-shadow: none;
+    height: 44px;
+}
+
+#formmi .input-group span {
+    font-size: 20px;
+    border-radius: 10px 0px 0px 10px;
+    margin: 0px;
+    padding: 0px 10px;
+}
+
+.bg-change input {
+    background-color: transparent !important;
+    border-bottom: 2px solid #000 !important;
+    border-radius: 0 !important;
+    font-weight: 600;
+    font-size: 14px;
+    border: none;
 }
